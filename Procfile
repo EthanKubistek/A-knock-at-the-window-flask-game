@@ -1,1 +1,1 @@
-web: gunicorn --chdir a-knock-at-the-window hello:app
+web: gunicorn "window_flask:create_app()"

@@ -9,7 +9,7 @@ setuptools.setup(
     version="0.0.1",
     author="Ethan Kubistek",
     author_email="ekubistek@email.com",
-    url="https://github.com/yourusername/yourproject",
+    url="https://github.com/EthanKubistek/A-knock-at-the-window-flask-game",
     description="Flask Adventure Game OOP game",
     long_description=long_description,
     long_description_content_type="text/markdown",

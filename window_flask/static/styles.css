@@ -1,0 +1,14 @@
+html {
+  font-size: 18px;
+}
+
+body {
+  max-width: 70%;
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-family: 'Creepster', cursive;
+  font-size: 3em;
+}

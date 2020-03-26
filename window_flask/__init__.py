@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for
 
 def create_app(test_config=None):
     app = Flask(__name__)
@@ -13,9 +13,44 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-
     @app.route('/')
-    def index():
-        return 'Flask Heroku Demo'
+    def start():
+        return render_template('intro.html')
+
+    @app.route('/intro')
+    def intro():
+        return render_template('intro.html')
+
+    @app.route('/bedroom')
+    def bedroom():
+        return render_template('bedroom.html')
+
+    @app.route('/bathroom')
+    def bathroom():
+        return render_template('bathroom.html')
+
+    @app.route('/kitchen')
+    def kitchen():
+        return render_template('kitchen.html')
+
+    @app.route('/office')
+    def office():
+        return render_template('office.html')
+
+    @app.route('/livingroom')
+    def livingroom():
+        return render_template('livingroom.html')
+
+    @app.route('/basement')
+    def basement():
+        return render_template('basement.html')
+
+    @app.route('/win')
+    def win():
+        return render_template('win.html')
+
+    @app.route('/death')
+    def death():
+        return render_template('death.html')
 
     return app

@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/ethankubistek/Desktop/Python/Flask_Adventure_Game/venv"
+VIRTUAL_ENV="/Users/ethankubistek/Desktop/Python/Flask-Window/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

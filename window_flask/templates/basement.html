@@ -27,8 +27,19 @@
 
 <p>
   What do you do?
+</p>
+<p>
   1. Hide in the laundry machine.
+</p>
+<p>
   2. Hide behinde all of your shit you keep down there.
+</p>
+<p>
   3. Get in your car and drive away.
-  </p>
+</p>
+<form method="post">
+  <label for="basement_decision">Make Your Choice</label>
+  <input Choice="Choice" id="base,basement_decision" value="{{ request.form['Choice'] }}" required>
+  <input type="submit" value="submit">
+</form>
 {% endblock %}

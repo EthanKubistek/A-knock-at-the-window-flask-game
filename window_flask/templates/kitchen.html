@@ -28,5 +28,22 @@
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠠⠇⠘⠾⠿⠿⣟⠟⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⡀⠤⠀⠀⠂⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠇⠀⠡⠀⠀⠀⠉⠙⣿⣿⣿⠀⠀⠀⠀⠨⡀⠀⠀⠀⠀⠀
  </p>
+ <p>
+   What do you do?
+ </p>
+ <p>
+   1. Try and hide in a cabinet
+ </p>
+ <p>
+   2. Fight the killer with a chefs knife
+ </p>
+ <p>
+   3. Hide in the pantry
+ </p>
+ <form method="post">
+   <label for="kitchen_decision">Make Your Choice</label>
+   <input Choice="Choice" id="kitchen_decision" value="{{ request.form['Choice'] }}" required>
+   <input type="submit" value="submit">
+ </form>
 
 {% endblock %}

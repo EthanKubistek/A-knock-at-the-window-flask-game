@@ -1,5 +1,5 @@
 import pytest
-from flaskherokudemo import create_app
+from window_flask import create_app
 
 
 @pytest.fixture

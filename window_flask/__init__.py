@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-
+from textwrap import dedent
 def create_app(test_config=None):
     app = Flask(__name__)
     app.config.from_mapping(
@@ -21,13 +21,63 @@ def create_app(test_config=None):
     def intro():
         return render_template('intro.html')
 
-    @app.route('/bedroom')
+    @app.route('/bedroom', methods=('GET', 'POST'))
     def bedroom():
         return render_template('bedroom.html')
+        if request.method == 'POST':
+            bedroom_decision = request.form['Choice']
+            image=None
 
-    @app.route('/bathroom')
+            if Choice == 1:
+                ⠀⠀⠀image="""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡟⠫⣉⠉⠉⡩⠋⢹⡇⠛⠉⠉⠉⠉⠉⠉⠉⠙⠛⢻⢶⠒⠛⠛⠛⣻⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠘⡦⠊⠀⠀⢸⡧⠀⠠⠤⠄⠀⠤⠀⠤⠄⠤⢼⠀⠣⡀⠀⡐⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⡇⠀⠀⠀⠸⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠈⡞⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣧⠀⠀⡁⠀⠀⠀⢸⣇⣀⣀⣀⣐⣉⣐⣀⡔⠲⡤⢼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⡟⠿⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⠆⠀⠀⠀⠈⡇⠀⠀⡀⢀⡘⢄⠘⡡⠴⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠋⠠⠀⡆⡌⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⠅⠀⠀⠀⢸⡇⣐⣀⠢⣠⠤⣄⡁⢄⢀⣀⢸⠀⠀⠀⢀⠀⠀⡄⠀⠀⠉⠉⡟⠉⠉⠙⢿⡋⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⠇⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠉⠉⠁⠐⢺⠀⠀⠀⢸⠀⠀⡀⠀⠀⠀⠈⣇⣀⢀⣀⣸⣃⣀⣀⣀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⡇⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⣿⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠁⠈⠉⠉⠱⡄⠀⠀
+⠀⠀⠀⠀⠀⡏⠀⠀⠃⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⣿⠀⠒⠒⠒⠂⠀⠀⠀⠀⠀⠀⠀⠐⠂⠀⡇⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⣿⠀⠐⠂⠀⠀⠀⠀⡀⡀⠀⠐⠂⠀⠀⠀⠁⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠤⠀⠀⠀⠀⠂⠀⡀⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⢠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠠⠀⠀⠀⠀⠀⠰⠀⠂⠀⠀⠀⠀⠀⠀⠀⠐⠐⠒⠀⠀⠀⡇⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⡇⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠀⠀⡇⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡆⠀⠀⠀⡄⠀⢠⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠁⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⡆⠀⢸⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠁⠸⠀⠀⠀
+⠀⠀⠀⠀⠀⡇⠀⠀⢀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⡇⠀⢸⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠇⢀⠀⠀⠀
+⠀⠀⠀⠀⠨⡇⠀⠀⢸⠀⠀⠀⠀⣰⠄⠀⠀⠀⠄⠠⢀⠀⠀⢠⠤⣧⠀⠀⠀⡃⠀⢸⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠤⡀⢸⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⢸⠀⠀⠀⠀⡯⡀⢠⠁⠀⠀⣂⠀⠀⠀⠀⠈⢸⠀⠀⠀⠀⠀⢸⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⢸⠀⠀⠀
+⠀⠀⠀⠀⠀⣿⠀⠀⠀⡄⠀⠀⠀⡇⠄⠀⠉⢁⠀⠀⠀⠐⠀⠀⠄⢺⠀⠀⠀⠀⠀⢸⠀⢀⣀⡀⣀⣀⠀⡀⠀⠀⠀⠀⣀⡆⢸⠀⠀⠀
+⠀⠀⠀⠀⠀⠉⠷⣤⣀⡇⠀⣠⠔⠃⠀⠰⢂⠀⠀⠘⠏⠉⢈⠐⢣⡛⣦⡀⠀⠀⠀⣸⡀⠀⠀⠀⠀⠀⠀⠀⣀⣁⣀⣀⣀⣀⣸⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠂⠁⠙⠷⠚⠑⡉⠀⠈⠀⠀⠀⠈⠀⠀⠁⠀⠀⠐⠀⠀⠉⢦⡦⠌⠀⠈⠉⠉⠉⠉⠍⡉⡍⠁⡉⠬⡈⠉⠉⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠁⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+
+            You made a good choice and avoided the killer this time.
+            Lets hope next time you are just as lucky.
+            """
+            return render_template('bedroom.html', image=image)
+            elif Choice == "2":
+                """
+                Bad choice looks like the killer saw your feet under the bed
+                """
+                return render_template('death.html, Choice=Choice')
+            elif choice == "3":
+                """
+                Bad choice looks like the killer cut
+                the line and now cut your throat.
+                """
+                return render_template('death.html, Choice=Choice')
+
+
+
+
+
+    @app.route('/bathroom', methods=('GET', 'POST'))
     def bathroom():
         return render_template('bathroom.html')
+
 
     @app.route('/kitchen')
     def kitchen():
@@ -52,5 +102,6 @@ def create_app(test_config=None):
     @app.route('/death')
     def death():
         return render_template('death.html')
+
 
     return app

@@ -26,7 +26,7 @@ def create_app(test_config=None):
 
         if request.method == 'POST':
             choice = request.form['bedroom_decision']
-            print(choice)
+
             if choice == "1":
                 return render_template('bedroom_transition.html')
             elif choice == "2":
@@ -45,23 +45,65 @@ def create_app(test_config=None):
 
     @app.route('/bathroom', methods=('GET', 'POST'))
     def bathroom():
+        if request.method == 'POST':
+            choice = request.form['bathroom_decision']
+            if choice == "1":
+                return render_template('bathroom_transition.html')
+            elif choice == "2":
+
+                  return render_template('death.html')
+            elif choice == "3":
+
+                  return render_template('death.html')
         return render_template('bathroom.html')
 
 
-    @app.route('/kitchen')
+    @app.route('/kitchen', methods=('GET', 'POST'))
     def kitchen():
+        if request.method == 'POST':
+            choice = request.form['kitchen_decision']
+            if choice == "1":
+                return render_template('death.html')
+            elif choice == "2":
+                  return render_template('death.html')
+            elif choice == "3":
+                return render_template('kitchen_transition.html')
         return render_template('kitchen.html')
 
-    @app.route('/office')
+    @app.route('/office', methods=('GET', 'POST'))
     def office():
+        if request.method == 'POST':
+            choice = request.form['office_decision']
+            if choice == "1":
+                return render_template('death.html')
+            elif choice == "2":
+              return render_template('death.html')
+            elif choice == "3":
+              return render_template('office_transition.html')
         return render_template('office.html')
 
-    @app.route('/livingroom')
+    @app.route('/livingroom', methods=('GET', 'POST'))
     def livingroom():
+        if request.method == 'POST':
+            choice = request.form['livingroom_decision']
+            if choice == "1":
+                return render_template('death.html')
+            elif choice == "2":
+              return render_template('death.html')
+            elif choice == "3":
+              return render_template('livingroom_transition.html')
         return render_template('livingroom.html')
 
-    @app.route('/basement')
+    @app.route('/basement', methods=('GET', 'POST'))
     def basement():
+        if request.method == 'POST':
+            choice = request.form['basement_decision']
+            if choice == "1":
+                return render_template('death.html')
+            elif choice == "2":
+              return render_template('death.html')
+            elif choice == "3":
+              return render_template('win.html')
         return render_template('basement.html')
 
     @app.route('/win')

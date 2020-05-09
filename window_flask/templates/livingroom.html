@@ -6,8 +6,8 @@
 <h1>A Knock At The Window</h1>
   <h2>Livingroom</h2>
   <p>
-    Your bedroom your safe haven somewhere where you feel comfortable,
-        you never thought you would be hunted down like an animal in here.
+    Your living room a place to relax and watch tv hopefully you won't
+    die here or it won't be the living room anymore.
   </p>
 
   <p>
@@ -41,10 +41,10 @@
   <p>
     3. Hide behide the couch
   </p>
-  <form method="post">
-    <label for="livingroom_decision">Make Your Choice</label>
-    <input Choice="Choice" id="livingroom_decision" value="{{ request.form['Choice'] }}" required>
-    <input type="submit" value="submit">
+  <form method="post" action = "{{url_for('livingroom')}}">
+      <label for="livingroom_decision">Make Your Choice</label>
+      <input type="text" name="livingroom_decision" ></input>
+      <button type="submit" name="button">submit</button>
   </form>
 
 {% endblock %}

@@ -42,9 +42,9 @@
   3. Use the phone on the nightstand to call for help
 </p>
 
-<form method="post">
+<form method="post" action = "{{url_for('bedroom')}}">
     <label for="bedroom_decision">Make Your Choice</label>
-    <input Choice="Choice" id="bedroom_decision" value="{{ request.form['Choice'] }}" required>
-    <input type="submit" value="submit">
+    <input type="text" name="bedroom_decision" ></input>
+    <button type="submit" name="button">submit</button>
 </form>
 {% endblock %}

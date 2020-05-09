@@ -23,52 +23,21 @@ def create_app(test_config=None):
 
     @app.route('/bedroom', methods=('GET', 'POST'))
     def bedroom():
-        return render_template('bedroom.html')
+
         if request.method == 'POST':
-            bedroom_decision = request.form['Choice']
-            image=None
+            choice = request.form['bedroom_decision']
+            print(choice)
+            if choice == "1":
+                return render_template('bedroom_transition.html')
+            elif choice == "2":
 
-            if Choice == 1:
-                ⠀⠀⠀image="""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⡟⠫⣉⠉⠉⡩⠋⢹⡇⠛⠉⠉⠉⠉⠉⠉⠉⠙⠛⢻⢶⠒⠛⠛⠛⣻⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠘⡦⠊⠀⠀⢸⡧⠀⠠⠤⠄⠀⠤⠀⠤⠄⠤⢼⠀⠣⡀⠀⡐⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⡇⠀⠀⠀⠸⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠈⡞⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣧⠀⠀⡁⠀⠀⠀⢸⣇⣀⣀⣀⣐⣉⣐⣀⡔⠲⡤⢼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠞⡟⠿⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⠆⠀⠀⠀⠈⡇⠀⠀⡀⢀⡘⢄⠘⡡⠴⠁⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠋⠠⠀⡆⡌⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⠅⠀⠀⠀⢸⡇⣐⣀⠢⣠⠤⣄⡁⢄⢀⣀⢸⠀⠀⠀⢀⠀⠀⡄⠀⠀⠉⠉⡟⠉⠉⠙⢿⡋⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⠇⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠉⠉⠁⠐⢺⠀⠀⠀⢸⠀⠀⡀⠀⠀⠀⠈⣇⣀⢀⣀⣸⣃⣀⣀⣀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⡇⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⣿⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠁⠈⠉⠉⠱⡄⠀⠀
-⠀⠀⠀⠀⠀⡏⠀⠀⠃⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⢸⠀⠀⣿⠀⠒⠒⠒⠂⠀⠀⠀⠀⠀⠀⠀⠐⠂⠀⡇⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⣿⠀⠐⠂⠀⠀⠀⠀⡀⡀⠀⠐⠂⠀⠀⠀⠁⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠈⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠤⠀⠀⠀⠀⠂⠀⡀⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⢠⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠠⠀⠀⠀⠀⠀⠰⠀⠂⠀⠀⠀⠀⠀⠀⠀⠐⠐⠒⠀⠀⠀⡇⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⡇⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠠⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠤⠀⠀⡇⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡆⠀⠀⠀⡄⠀⢠⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠁⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⡆⠀⢸⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠁⠸⠀⠀⠀
-⠀⠀⠀⠀⠀⡇⠀⠀⢀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⡇⠀⢸⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠇⢀⠀⠀⠀
-⠀⠀⠀⠀⠨⡇⠀⠀⢸⠀⠀⠀⠀⣰⠄⠀⠀⠀⠄⠠⢀⠀⠀⢠⠤⣧⠀⠀⠀⡃⠀⢸⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠤⡀⢸⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⢸⠀⠀⠀⠀⡯⡀⢠⠁⠀⠀⣂⠀⠀⠀⠀⠈⢸⠀⠀⠀⠀⠀⢸⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠠⠀⡇⢸⠀⠀⠀
-⠀⠀⠀⠀⠀⣿⠀⠀⠀⡄⠀⠀⠀⡇⠄⠀⠉⢁⠀⠀⠀⠐⠀⠀⠄⢺⠀⠀⠀⠀⠀⢸⠀⢀⣀⡀⣀⣀⠀⡀⠀⠀⠀⠀⣀⡆⢸⠀⠀⠀
-⠀⠀⠀⠀⠀⠉⠷⣤⣀⡇⠀⣠⠔⠃⠀⠰⢂⠀⠀⠘⠏⠉⢈⠐⢣⡛⣦⡀⠀⠀⠀⣸⡀⠀⠀⠀⠀⠀⠀⠀⣀⣁⣀⣀⣀⣀⣸⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠂⠁⠙⠷⠚⠑⡉⠀⠈⠀⠀⠀⠈⠀⠀⠁⠀⠀⠐⠀⠀⠉⢦⡦⠌⠀⠈⠉⠉⠉⠉⠍⡉⡍⠁⡉⠬⡈⠉⠉⠁⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠁⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
-            You made a good choice and avoided the killer this time.
-            Lets hope next time you are just as lucky.
-            """
-            return render_template('bedroom.html', image=image)
-            elif Choice == "2":
-                """
-                Bad choice looks like the killer saw your feet under the bed
-                """
-                return render_template('death.html, Choice=Choice')
+                  return render_template('death.html')
             elif choice == "3":
-                """
-                Bad choice looks like the killer cut
-                the line and now cut your throat.
-                """
-                return render_template('death.html, Choice=Choice')
+
+                  return render_template('death.html')
+        return render_template('bedroom.html')
+
+
 
 
 
